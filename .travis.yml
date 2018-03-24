@@ -1,0 +1,14 @@
+language: nix
+before_script:
+  - nix-channel --update
+  - nix-env -i sassc
+script: make
+
+deploy:
+  provider: pages
+  skip-cleanup: true
+  github-token: $GITHUB_TOKEN
+  local-dir: dst
+  target-branch: gh-pages
+  on:
+    branch: master
